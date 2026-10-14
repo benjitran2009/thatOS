@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>thatOS $$$$</title>
+    <title>thatOS Development</title>
 </head>
 <body>
-    
+    <div id="init">Initializing...</div>
+    <script async defer>
+        // TODO: this may be insecure.
+        Object.freeze(Object.defineProperty(window, "build", {
+             configurable: false,
+             enumerable: false,
+            get() {
+                return {
+                    isDevelopmentMode: window.location.hostname.startsWith("127.0.0.1"),
+                    isSigned: false,
+                    signature: {
+                    },
+                    build: 0,
+                    version: "v0.0.0-dev",
+                    edition: "Development",
+                    product: "thatOS",
+                };
+            }
+        }).build)
+    </script>
 </body>
 </html>
